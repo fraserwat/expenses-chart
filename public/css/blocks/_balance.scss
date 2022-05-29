@@ -1,0 +1,8 @@
+.balance {
+    padding-block: get-size('600');
+    padding-inline: get-size('700');
+}
+.balance > img {
+    height: get-size('900');
+    margin-block: auto;
+}

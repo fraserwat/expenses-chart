@@ -1,0 +1,41 @@
+// CONFIG
+
+@import 'reset';
+@import 'config';
+@import '../../node_modules/gorko/gorko.scss';
+
+// BLOCKS
+@import 'blocks/container';
+@import 'blocks/balance';
+@import 'blocks/expenses';
+@import 'blocks/totals';
+@import 'blocks/bar';
+
+// UTILITIES
+@import 'utilities/max-width';
+@import 'utilities/rad';
+@import 'utilities/flex-between';
+
+// GLOBAL STYLES
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+}
+span {
+    display: block;
+}
+.big-writing {
+    font-weight: 700;
+    font-size: clamp(get-size('600'), 5.76vw, get-size('700'));
+}
+svg {
+    overflow: visible;
+    margin-top: get-size('900');
+    padding-bottom: get-size('500');
+    margin-bottom: get-size('500');
+}
+h2 {
+    font-weight: 400;
+    font-size: get-size('400');
+}

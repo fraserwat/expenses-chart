@@ -1,0 +1,17 @@
+.bar {
+    cursor: pointer;
+    fill: get-color('orange');
+}
+.bar.active {
+    fill: get-color('cyan');
+}
+.bar:hover {
+    fill: lighten(get-color('orange'), 10%)
+}
+.bar.active:hover {
+    fill: lighten(get-color('cyan'), 10%)
+}
+path,
+line {
+    opacity: 0;
+}

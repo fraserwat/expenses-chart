@@ -1,0 +1,9 @@
+.totals {
+    padding-top: get-size('600');
+    margin-top: get-size('500');
+    border-top: solid 2px get-color('cream');
+}
+
+.totals * {
+    margin-top: auto;
+}
