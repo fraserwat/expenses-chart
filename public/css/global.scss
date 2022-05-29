@@ -10,6 +10,7 @@
 @import 'blocks/expenses';
 @import 'blocks/totals';
 @import 'blocks/bar';
+@import 'blocks/tooltip';
 
 // UTILITIES
 @import 'utilities/max-width';
@@ -32,8 +33,10 @@ span {
 svg {
     overflow: visible;
     margin-top: get-size('900');
-    padding-bottom: get-size('500');
     margin-bottom: get-size('500');
+}
+text {
+    font-size: 12px;
 }
 h2 {
     font-weight: 400;

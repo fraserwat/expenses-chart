@@ -1,0 +1,15 @@
+.tooltip {
+    position: absolute;
+    top: 0;
+    background-color: get-color('dark-brown');
+    color: get-color('off-white');
+    text-align: center;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: get-size('300');
+    opacity: 0;
+    transition: .2s ease-in-out;
+}
+.tooltip.active {
+    opacity: 1;
+}

@@ -1,6 +1,5 @@
 <template>
-  <div class="color-med-brown" ref="chart">
-    <!-- {{ loadData }} -->
+  <div class="[ svg-container ] [ color-med-brown ]" ref="chart">
     <svg ></svg>
   </div>
 </template>
@@ -52,12 +51,18 @@ export default {
         .enter()
         .append('rect')
         .attr('class', 'bar')
-        .attr('class', (data) => `${data.amount === this.getMaxValue() ? 'active' : ''} bar`)
+        .attr('class', (data) => `${data.day} bar${data.amount === this.getMaxValue() ? ' active' : ''}`)
         .attr('rx', 5)
         .attr('width', xScale.bandwidth())
         .attr('height', (data) => height - yScale(data.amount))
         .attr('x', (data) => (xScale(data.day)))
-        .attr('y', (data) => yScale(data.amount));
+        .attr('y', (data) => yScale(data.amount))
+        // event listeners
+        .on('mouseover', (elem) => this.tooltipListener(elem.target.classList[0]))
+        .on('mouseout', (elem) => this.tooltipListenerOff(elem.target.classList[0]))
+        // accessible tooltips
+        .append('title')
+        .text((data) => `$${data.amount}`);
 
       const xAxis = d3
         .axisBottom()
@@ -67,11 +72,31 @@ export default {
         .attr('transform', `translate(0, ${height})`)
         .call(xAxis);
 
-      // container.append('g')
-      //   .attr('transform', `translate(0,${height})`)
-      //   .call(d3.axisBottom(xScale))
-      //   .selectAll('text')
-      //   .attr('transform', 'translate(-15, 15) rotate(-45)');
+      this.renderTooltips();
+    },
+    tooltipListener(weekday) {
+      this.$refs.chart.querySelector(`#${weekday}`).classList.add('active');
+    },
+    tooltipListenerOff(weekday) {
+      this.$refs.chart.querySelector(`#${weekday}`).classList.remove('active');
+    },
+    renderTooltips() {
+      const svg = this.$refs.chart.children;
+      if (svg) {
+        svg[0].childNodes.forEach((node) => {
+          if (node.classList.contains('bar')) {
+            const tooltip = document.createElement('p');
+            tooltip.innerHTML = node.querySelector('title').innerHTML;
+            tooltip.classList.add('tooltip');
+
+            let cssConstructor = `transform: translate(${node.getAttribute('x')}px);`;
+            cssConstructor += `top: ${node.getAttribute('y')}px;`;
+            tooltip.setAttribute('style', cssConstructor);
+            tooltip.setAttribute('id', node.classList[0]);
+            svg[0].parentNode.appendChild(tooltip);
+          }
+        });
+      }
     },
   },
   created() {
@@ -85,3 +110,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .svg-container {
+    position: relative;
+  }
+</style>

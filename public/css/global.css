@@ -642,6 +642,24 @@ line {
   opacity: 0;
 }
 
+.tooltip {
+  position: absolute;
+  top: 0;
+  background-color: #382314;
+  color: #FFFBF6;
+  text-align: center;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.tooltip.active {
+  opacity: 1;
+}
+
 .max-width-1100 {
   max-width: 1100px;
 }
@@ -683,8 +701,11 @@ span {
 svg {
   overflow: visible;
   margin-top: 3rem;
-  padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
+}
+
+text {
+  font-size: 12px;
 }
 
 h2 {
