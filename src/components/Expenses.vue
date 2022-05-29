@@ -1,5 +1,5 @@
 <template>
-  <div class="[ expenses ] [ bg-off-white color-dark-brown rad-20 ]">
+  <section class="[ expenses ] [ bg-off-white color-dark-brown rad-20 ]">
     <h1 class="big-writing">Spending - Last 7 days</h1>
     <expense-chart />
     <div class="[ totals ] [ flex-between ]">
@@ -15,7 +15,7 @@
         </span>from last month
       </p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
